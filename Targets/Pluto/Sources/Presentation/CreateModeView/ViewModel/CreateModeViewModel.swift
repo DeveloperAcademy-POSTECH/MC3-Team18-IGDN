@@ -107,6 +107,7 @@ final class CreateModeViewModel {
             let transferingObject = Object(creativeObject: object)
             objects.append(transferingObject)
         }
+//        objects.printAll()
         return objects
     }
 }

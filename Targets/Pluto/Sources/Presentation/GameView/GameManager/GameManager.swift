@@ -123,7 +123,7 @@ class GameManager: ObservableObject {
         let index = Int(x) % 30
         
         let backgroundNodes = backGround.timeLayer[index]
-        print("@LOG \(index), \(x) : \(backgroundNodes.count)")
+
         scene?.addChilds(backgroundNodes.map { $0 })
         for node in backgroundNodes {
             node.runAndRemove(SKAction.sequence([SKAction.fadeIn(withDuration: 1), SKAction.fadeOut(withDuration: 1)]).forever)

@@ -12,9 +12,10 @@ struct Object: ObstacleProtocol {
     var point: CGPoint
     var size: CGSize
     var color: AstronautColor
-    var path: CGPath
+    var path: Int
     var imageName: String
     var isClockWise: Bool
+    var tutorails: [GameAlertType] = []
     
     // 초기화
     init(creativeObject: CreativeObject) {
@@ -25,7 +26,7 @@ struct Object: ObstacleProtocol {
         else {
             self.size = CreativeObject.CGSizeList[creativeObject.sizeIndex]
         }
-        self.path = creativeObject.path
+        self.path = creativeObject.pathIndex
         self.imageName = Obstacle.image[creativeObject.colorIndex][creativeObject.sizeIndex][creativeObject.shapeIndex]
         self.isClockWise = Obstacle.isClockWise[creativeObject.shapeIndex]
         
@@ -41,6 +42,27 @@ struct Object: ObstacleProtocol {
         default:
             self.color = .none
         }
+    }
+    
+    init(_ point: CGPoint, _ size: CGSize, _ color: AstronautColor, _ path: Int, _ imageName: String, _ isColockWise: Bool, _ tutorails: [GameAlertType] = []){
+        
+        self.point = point
+        self.size = size
+        self.color = color
+        self.path = path
+        self.imageName = imageName
+        self.isClockWise = isColockWise
+        self.tutorails = tutorails
+    }
+}
+
+extension Array where Element == Object {
+    func printAll() {
+        print("[")
+        for obj in self {
+            print("Object(CGPoint(x: \(obj.point.x), y: \(obj.point.y)), CGSize(width: \(obj.size.width), height: \(obj.size.height)), .\(obj.color), \(obj.path), \"\(obj.imageName)\", \(obj.isClockWise)),")
+        }
+        print("]")
     }
 }
 

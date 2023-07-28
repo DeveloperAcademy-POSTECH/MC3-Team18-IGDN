@@ -133,11 +133,11 @@ extension GameViewController: ShowAlertDelegate {
     }
     
     func restartGame() {
+        
         gameAlertView.removeFromSuperview()
         
         if let view = self.view as? SKView {
-            
-            gameManager = GameManager(constants: self.gameConstants, map: self.map)
+            gameManager = GameManager(constants: self.gameConstants, map: stages[GameData.shared.selectedStage + 1].path)
             gameManager.delegate = self
             let scene = gameManager.generateScene(size: view.bounds.size)
             view.presentScene(scene)

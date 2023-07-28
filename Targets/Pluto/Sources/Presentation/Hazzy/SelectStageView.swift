@@ -82,6 +82,8 @@ struct PlayButton: View {
                     SoundManager.shared.playBackgroundMusic(allMusicCases[selectedStage])
                     SoundManager.shared.playAmbience(allAmbienceCases[selectedStage])
                     GameData.shared.selectedStage = selectedStage
+                    AppDelegate.vc?.pushViewController(GameViewController(gameConstants: GameConstants(), map: stages[selectedStage].path), animated: false)
+                    
                 }
             } else {
                 isAnimating.toggle()
